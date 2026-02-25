@@ -162,18 +162,16 @@ alumni-management-system/
 
 ---
 
-## ⚙ Installation & Setup  
-
-### 1️⃣ Clone Repository  
-```bash
+⚙ Installation & Setup
+1️⃣ Clone Repository
 git clone https://github.com/joyswapnilrajparadeshi-cmd/alumni-management-system.git
 2️⃣ Import Database
 
 Create database: alumni
 
-Import: alumni.sql
+Import file: alumni.sql
 
-3️⃣ Configure DB
+3️⃣ Configure Database
 
 Edit db_connection.php
 
@@ -187,7 +185,7 @@ Start Apache & MySQL using XAMPP
 
 5️⃣ Access System
 http://localhost/alumni-management-system/
-📊 Modules Implemented
+📊 Implemented Modules
 
 Alumni Management
 
@@ -209,9 +207,9 @@ Notifications System
 
 AI-powered alumni analytics
 
-Mobile app (Android / iOS)
+Mobile application (Android / iOS)
 
-Cloud deployment
+Cloud deployment (AWS / Azure)
 
 Microservices architecture
 
@@ -224,6 +222,10 @@ Real-time chat system
 Paradeshi Joy Swapnil Raj
 B.Tech CSE | Full Stack Developer | AI & ML Enthusiast
 
-📧 Email Me
+📧 Email: joyswapnilrajparadeshi@gmail.com
 
-🌐 Portfolio
+🌐 Portfolio: https://joyswapnilrajparadeshi-cmd.github.io/portfolio/
+
+⭐ Support
+
+If you find this project useful, please star ⭐ the repository and support my work!
