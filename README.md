@@ -80,8 +80,7 @@ Backend (PHP + Flask Microservices)
 Database (MySQL)
 ↓
 SMTP Services (PHPMailer)
-↓
-Payment Gateway (Razorpay)
+
 
 
 ---
