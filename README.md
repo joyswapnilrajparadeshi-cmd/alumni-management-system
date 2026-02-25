@@ -10,6 +10,15 @@
 
 ---
 
+## 🌐 Live Demo  
+
+🚀 **Experience the platform in action:**  
+👉 https://alumni-management.kesug.com  
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Website-blue?style=for-the-badge&logo=google-chrome&logoColor=white)](https://alumni-management.kesug.com)
+
+---
+
 ## 🚀 Project Overview  
 
 **Alumni Management System** is a **large-scale enterprise-grade full stack platform** built to digitize, automate, and streamline alumni engagement for universities and colleges.
