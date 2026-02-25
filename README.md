@@ -5,8 +5,6 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)]
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)]
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)]
-[![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask)]
-[![Razorpay](https://img.shields.io/badge/Razorpay-0070f3?style=for-the-badge)]
 [![PHPMailer](https://img.shields.io/badge/PHPMailer-ff69b4?style=for-the-badge)]
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen?style=for-the-badge)]
 
