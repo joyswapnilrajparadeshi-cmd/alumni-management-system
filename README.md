@@ -110,9 +110,8 @@ Module	Description
 
 ### Backend  
 - PHP 8+  
-- Flask (Python microservices)  
 - PHPMailer  
-- Razorpay API  
+
 
 ### Database  
 - MySQL  
