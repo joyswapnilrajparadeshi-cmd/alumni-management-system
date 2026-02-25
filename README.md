@@ -162,7 +162,8 @@ alumni-management-system/
 
 ---
 
-**⚙ Installation & Setup**
+## ⚙ Installation & Setup
+
 1️⃣ Clone Repository
 git clone https://github.com/joyswapnilrajparadeshi-cmd/alumni-management-system.git
 2️⃣ Import Database
@@ -186,8 +187,10 @@ Start Apache & MySQL using XAMPP
 5️⃣ Access System
 http://localhost/alumni-management-system/
 
+---
 
-**👨‍💻 Author**
+
+## 👨‍💻 Author
 
 Paradeshi Joy Swapnil Raj
 B.Tech CSE | Full Stack Developer | AI & ML Enthusiast
