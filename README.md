@@ -164,17 +164,18 @@ alumni-management-system/
 
 ## ⚙ Installation & Setup
 
-1️⃣ Clone Repository
+### 1️⃣ Clone Repository
+```bash
 git clone https://github.com/joyswapnilrajparadeshi-cmd/alumni-management-system.git
 2️⃣ Import Database
 
-Create database: alumni
+Create Database: alumni
 
-Import file: alumni.sql
+Import File: alumni.sql
 
 3️⃣ Configure Database
 
-Edit db_connection.php
+Edit db_connection.php:
 
 $server = "localhost";
 $user   = "root";
@@ -185,7 +186,14 @@ $db     = "alumni";
 Start Apache & MySQL using XAMPP
 
 5️⃣ Access System
+
+Open in your browser:
 http://localhost/alumni-management-system/
+
+
+This version separates each step, uses proper code blocks, and is visually neat for recruiters.  
+
+Do you want me to do the same for **Author & Support** section as well?
 
 ---
 
