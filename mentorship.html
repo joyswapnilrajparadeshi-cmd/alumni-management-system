@@ -1,0 +1,258 @@
+<?php
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorship Program</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        /* Carousel Container */
+        .mentor-carousel {
+            position: relative;
+            width: 80%;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .mentor-cards {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .mentor-card {
+            min-width: 100%;
+            max-width: 100%;
+            padding: 20px;
+            text-align: center;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mentor-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .mentor-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .mentor-card p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 2em;
+            border-radius: 50%;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .upload-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .upload-form input[type="text"], 
+        .upload-form input[type="file"] {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .upload-form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .upload-form button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mentorship Program</h1>
+    </header>
+
+    <main>
+        <!-- Mentor Carousel -->
+        <section class="mentor-carousel">
+            <div class="mentor-cards" id="mentorCards">
+                <!-- Preloaded mentor profiles -->
+                <div class="mentor-card">
+                    <img src="mentor1.jpg" alt="Mentor 1">
+                    <h3>Prof. B. Eswara Reddy</h3>
+                    <p>Director of the Software Development Centre</p>
+                </div>
+                <div class="mentor-card">
+                    <img src="mentor2.jpg" alt="Mentor 2">
+                    <h3>Prof. A. Suresh Babu</h3>
+                    <p>specializes in data mining and machine learning.</p>
+                </div>
+                <div class="mentor-card">
+                    <img src="mentor3.jpg" alt="Mentor 3">
+                    <h3>Prof. A. Ananda Rao</h3>
+                    <p>specializes in Artificial Intelligence.</p>
+                </div>
+            </div>
+            <!-- Carousel Navigation Buttons -->
+            <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+        </section>
+
+        <!-- Upload Mentor Form -->
+        <section class="upload-form">
+            <h3>Add a Mentor</h3>
+            <form id="mentorUploadForm" onsubmit="addMentor(event)">
+                <input type="text" id="mentorName" placeholder="Mentor Name" required>
+                <input type="text" id="mentorDescription" placeholder="Mentor Expertise (e.g., AI, Web Dev)" required>
+                <input type="file" id="mentorImage" accept="image/*" required>
+                <button type="submit">Add Mentor</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mentorship Program | All rights reserved.</p>
+    </footer>
+
+    <script>
+        const mentorCards = document.getElementById('mentorCards');
+        const mentorSlides = mentorCards.children;
+        let currentIndex = 0;
+
+        // Function to change slide
+        function moveSlide(step) {
+            currentIndex += step;
+
+            // If at the beginning or end, loop through
+            if (currentIndex >= mentorSlides.length) {
+                currentIndex = 0;
+            }
+            if (currentIndex < 0) {
+                currentIndex = mentorSlides.length - 1;
+            }
+
+            // Move the mentor cards
+            mentorCards.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        // Function to add a new mentor
+        function addMentor(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const name = document.getElementById('mentorName').value;
+            const description = document.getElementById('mentorDescription').value;
+            const imageInput = document.getElementById('mentorImage');
+            const file = imageInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Create a new mentor card
+                    const mentorCard = document.createElement('div');
+                    mentorCard.classList.add('mentor-card');
+
+                    mentorCard.innerHTML = `
+                        <img src="${e.target.result}" alt="${name}">
+                        <h3>${name}</h3>
+                        <p>${description}</p>
+                    `;
+
+                    // Append the new mentor card to the carousel
+                    mentorCards.appendChild(mentorCard);
+
+                    // Move to the newly added mentor
+                    currentIndex = mentorSlides.length - 1;
+                    mentorCards.style.transform = `translateX(-${currentIndex * 100}%)`;
+                };
+                reader.readAsDataURL(file);
+            }
+
+            // Reset the form after submission
+            document.getElementById('mentorUploadForm').reset();
+        }
+    </script>
+</body>
+</html>

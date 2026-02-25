@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate to JNTUA</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #8b0000; /* JNTUA theme color */
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        main {
+            text-align: center;
+            padding: 20px;
+        }
+        .qr-code {
+            margin: 20px auto;
+            display: block;
+            width: 200px;
+            height: 200px;
+            border: 5px solid #8b0000;
+            border-radius: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .upi-id {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #8b0000;
+        }
+        button {
+            background-color: #8b0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #a52a2a;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Donate to JNTUA</h1>
+        <p>Your support helps us achieve more for our students and community.</p>
+    </header>
+    <main>
+        <p>Scan the QR code below to donate via PhonePe, Google Pay, or Paytm:</p>
+        <img src="your-qr-code.png" alt="Donate QR Code" class="qr-code">
+        <p>Or send directly to our UPI ID:</p>
+        <p class="upi-id">9703718325@ibl</p>
+        <button onclick="copyUPI()">Copy UPI ID</button>
+        <p>We appreciate your contribution. Thank you for supporting JNTUA!</p>
+    </main>
+    <footer>
+        &copy; 2025 JNTUA. All Rights Reserved.
+    </footer>
+    <script>
+        function copyUPI() {
+            navigator.clipboard.writeText('9703718325@ibl').then(() => {
+                alert('UPI ID copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alumni Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b, #56ccf2, #6a11cb);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-image: url('index-header.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            color: #fff;
+            text-align: center;
+        }
+        header h1, header p {
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        nav {
+            background: #333;
+            padding: 10px 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #feb47b;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 50px;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Alumni Management System</h1>
+        <p>Connect. Network. Celebrate.</p>
+    </header>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="events.html">Events</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="mentorship.html">Mentorship</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+
+    <div class="container">
+        <!-- Dynamic Profile Section -->
+        <section class="section" id="profile-section">
+            <h2>Your Profile</h2>
+            <form id="profile-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="graduationYear">Graduation Year</label>
+                    <input type="number" id="graduationYear" class="form-control" placeholder="Enter your graduation year">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="updateProfile()">Save Profile</button>
+            </form>
+        </section>
+
+        <!-- Dynamic Gallery Section -->
+        <section class="section" id="gallery-section">
+            <h2>Gallery</h2>
+            <div id="gallery">
+                <!-- Dynamically added images will go here -->
+            </div>
+            <form id="gallery-form" class="mt-3">
+                <div class="form-group">
+                    <label for="galleryImage">Add New Image</label>
+                    <input type="file" id="galleryImage" class="form-control">
+                </div>
+                <button type="button" class="btn btn-success" onclick="addGalleryImage()">Add to Gallery</button>
+            </form>
+        </section>
+
+        <!-- Dynamic Video Section -->
+        <section class="section" id="video-section">
+            <h2>Videos</h2>
+            <div id="videoGallery">
+                <!-- Dynamically added videos will go here -->
+            </div>
+            <form id="video-form" class="mt-3">
+                <div class="form-group">
+                    <label for="videoUrl">Add Video URL</label>
+                    <input type="url" id="videoUrl" class="form-control" placeholder="Enter video URL (YouTube, etc.)">
+                </div>
+                <button type="button" class="btn btn-success" onclick="addVideo()">Add Video</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Alumni Management System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mock data (Replace with real backend integration)
+        const profile = { name: '', email: '', graduationYear: '' };
+        const galleryImages = [];
+        const videos = [];
+
+        // Update Profile
+        function updateProfile() {
+            profile.name = document.getElementById('name').value;
+            profile.email = document.getElementById('email').value;
+            profile.graduationYear = document.getElementById('graduationYear').value;
+            alert('Profile updated successfully!');
+            console.log('Updated Profile:', profile);
+        }
+
+        // Add Gallery Image
+        function addGalleryImage() {
+            const fileInput = document.getElementById('galleryImage');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    galleryImages.push(e.target.result);
+                    renderGallery();
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please select an image to upload.');
+            }
+        }
+
+        function renderGallery() {
+            const galleryDiv = document.getElementById('gallery');
+            galleryDiv.innerHTML = galleryImages.map(img => `<img src="${img}" alt="Gallery Image" style="width:100%; max-width:300px; margin: 10px;">`).join('');
+        }
+
+        // Add Video
+        function addVideo() {
+            const videoUrl = document.getElementById('videoUrl').value;
+            if (videoUrl) {
+                videos.push(videoUrl);
+                renderVideos();
+            } else {
+                alert('Please enter a video URL.');
+            }
+        }
+
+        function renderVideos() {
+            const videoDiv = document.getElementById('videoGallery');
+            videoDiv.innerHTML = videos.map(url => `<iframe src="${url}" frameborder="0" allowfullscreen style="width:100%; max-width:300px; height:200px; margin: 10px;"></iframe>`).join('');
+        }
+    </script>
+</body>
+</html>

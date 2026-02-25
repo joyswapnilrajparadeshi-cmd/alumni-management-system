@@ -1,0 +1,202 @@
+<?php
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .job-listings {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .job {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .job:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+
+        p {
+            font-size: 1em;
+            margin-bottom: 8px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .apply-form {
+            margin-top: 15px;
+        }
+
+        .apply-form input,
+        .apply-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .apply-form button {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Job Opportunities</h1>
+    </header>
+
+    <main>
+        <section id="job-listings" class="job-listings">
+            <!-- Jobs will be generated here dynamically -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Job Listings | All rights reserved.</p>
+    </footer>
+
+    <script>
+        const jobs = [
+            {
+                title: "Software Developer",
+                company: "Tech Solutions Inc.",
+                location: "Remote",
+                description: "Develop and maintain software applications. Collaborate with cross-functional teams.",
+                requirements: "Bachelor’s degree in Computer Science, proficiency in JavaScript, React."
+            },
+            {
+                title: "Web Designer",
+                company: "Creative Web Studio",
+                location: "New York, NY",
+                description: "Design responsive and engaging websites. Work closely with clients to understand design needs.",
+                requirements: "Experience with HTML, CSS, and Adobe Photoshop."
+            },
+            {
+                title: "Data Scientist",
+                company: "DataX Analytics",
+                location: "San Francisco, CA",
+                description: "Analyze large datasets to provide insights and help drive business decisions.",
+                requirements: "Master’s degree in Data Science, experience with Python and machine learning algorithms."
+            }
+        ];
+
+        function generateJobListings() {
+            const jobListings = document.getElementById('job-listings');
+            jobListings.innerHTML = ""; // Clear any existing content
+
+            jobs.forEach((job, index) => {
+                const jobElement = document.createElement('article');
+                jobElement.classList.add('job');
+                jobElement.innerHTML = `
+                    <h2>${job.title}</h2>
+                    <p><strong>Company:</strong> ${job.company}</p>
+                    <p><strong>Location:</strong> ${job.location}</p>
+                    <p><strong>Job Description:</strong> ${job.description}</p>
+                    <p><strong>Requirements:</strong> ${job.requirements}</p>
+                    <div class="apply-form">
+                        <h3>Apply for ${job.title}</h3>
+                        <form onsubmit="handleApply(event, ${index})">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Your Email" required>
+                            <textarea placeholder="Cover Letter" rows="4" required></textarea>
+                            <button type="submit">Apply Now</button>
+                        </form>
+                    </div>
+                `;
+                jobListings.appendChild(jobElement);
+            });
+        }
+
+        function handleApply(event, jobIndex) {
+            event.preventDefault();  // Prevent the form from submitting
+
+            const form = event.target;
+            const name = form.querySelector('input[type="text"]').value;
+            const email = form.querySelector('input[type="email"]').value;
+            const coverLetter = form.querySelector('textarea').value;
+
+            alert(`Thank you for applying, ${name}!\nYour application for the ${jobs[jobIndex].title} position has been submitted.`);
+
+            // Reset the form
+            form.reset();
+        }
+
+        // Generate job listings on page load
+        generateJobListings();
+    </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Alumni Management System</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b, #56ccf2, #6a11cb);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            position: relative;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Navigation Buttons */
+        a {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #ff6f61, #feb47b);
+            border-radius: 25px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        a:hover {
+            background: linear-gradient(45deg, #feb47b, #ff6f61);
+            transform: scale(1.1);
+        }
+
+        /* Header Image */
+        header {
+            background-image: url('index-header.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            color: #fff;
+        }
+
+        header h1 {
+            font-size: 3em;
+            font-weight: 900;
+        }
+
+        header p {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        /* Gallery Section */
+        .container {
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            max-width: 100%;
+            height: 400px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider img {
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: #feb47b;
+            color: #fff;
+        }
+
+        /* Footer Section */
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 10px;
+        }
+
+        footer p {
+            font-size: 1em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Alumni Management System</h1>
+        <p>Your gateway to staying connected with your alma mater and fellow alumni.</p>
+    </header>
+
+    <p>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="video.html">Video Gallery</a>
+    </p>
+    
+    <h2>About the System</h2>
+    <p>
+        The Alumni Management System helps alumni stay connected, network, and celebrate their journey. 
+        Use the links above to explore the system.
+    </p>
+
+    <h2>Gallery</h2>
+    <section class="container">
+        <div class="slider-wrapper">
+            <div class="slider" id="slider">
+                <img src="gallery1.jpg" alt="Alumni Event 1">
+                <img src="gallery2.jpg" alt="Alumni Event 2">
+                <img src="gallery3.jpg" alt="Alumni Event 3">
+                <img src="gallery4.jpg" alt="Alumni Event 4">
+            </div>
+            <div class="navigation">
+                <button class="prev" id="prev">&lt;</button>
+                <button class="next" id="next">&gt;</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Alumni Management System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const slider = document.getElementById('slider');
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+        let currentIndex = 0;
+
+        prev.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : 0;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+
+        next.addEventListener('click', () => {
+            currentIndex = (currentIndex < slider.children.length - 1) ? currentIndex + 1 : slider.children.length - 1;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+    </script>
+</body>
+</html>

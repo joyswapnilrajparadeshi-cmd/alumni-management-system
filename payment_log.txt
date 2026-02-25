@@ -1,0 +1,6 @@
+{
+    "payment_id": "pay_xxx",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "amount": 500
+}

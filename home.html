@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Alumni Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+        }
+        nav a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        .hero {
+            background: url('alumni.jpg') no-repeat center center/cover;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        .sections {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .section {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: left;
+            cursor: pointer;
+        }
+        .section h2 {
+            margin: 0 0 10px;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .popup h2 {
+            margin-top: 0;
+        }
+        .popup p {
+            margin-bottom: 20px;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        .close-btn {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .close-btn:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Alumni Management System</h1>
+    </header>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="mentorship.html">Mentorship</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <main>
+        <div class="hero">
+            Connect, Collaborate, Celebrate
+        </div>
+        <div class="sections">
+            <div class="section" onclick="showPopup('aboutPopup')">
+                <h2>About Us</h2>
+                <p>Learn more about our mission to connect alumni and foster a thriving community.</p>
+            </div>
+            <div class="section" onclick="showPopup('eventsPopup')">
+                <h2>Latest Events</h2>
+                <p>Stay updated with our upcoming events and reunions.</p>
+            </div>
+            <div class="section" onclick="showPopup('storiesPopup')">
+                <h2>Alumni Stories</h2>
+                <p>Read inspiring stories from our alumni making a difference worldwide.</p>
+            </div>
+        </div>
+        
+        <div class="overlay" id="overlay"></div>
+
+        <div class="popup" id="aboutPopup">
+            <h2>About Us</h2>
+            <p>Our mission at JNTUA Alumni Management System is to strengthen the bond between alumni and the university, ensuring a collaborative and supportive network.</p>
+            <button class="close-btn" onclick="closePopup()">Close</button>
+        </div>
+        <div class="popup" id="eventsPopup">
+            <h2>Latest Events</h2>
+            <p>Join us for the latest alumni gatherings, including reunions, webinars, and professional networking events organized by JNTUA.</p>
+            <button class="close-btn" onclick="closePopup()">Close</button>
+        </div>
+        <div class="popup" id="storiesPopup">
+            <h2>Alumni Stories</h2>
+            <p>Discover inspiring stories of JNTUA alumni who are making significant contributions in various fields across the globe.</p>
+            <button class="close-btn" onclick="closePopup()">Close</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Alumni Management System. All rights reserved.</p>
+    </footer>
+    <script>
+        function showPopup(id) {
+            document.getElementById(id).style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.querySelectorAll('.popup').forEach(popup => popup.style.display = 'none');
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

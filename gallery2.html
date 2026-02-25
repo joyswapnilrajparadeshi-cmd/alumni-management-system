@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Image Slider with Captions</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        /* Carousel Container */
+        .carousel {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 2em;
+            border-radius: 50%;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .caption {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-style: italic;
+            color: #555;
+        }
+
+        .upload-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .upload-form input[type="file"],
+        .upload-form input[type="text"] {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .upload-form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .upload-form button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Alumni Gallery</h1>
+    </header>
+
+    <main>
+        <!-- Image Carousel -->
+        <section class="carousel">
+            <div class="carousel-images" id="carouselImages">
+                <!-- Preloaded images (static) -->
+                <img src="gallery1.jpg" alt="Gallery Image 1">
+                <img src="gallery2.jpg" alt="Gallery Image 2">
+                <img src="gallery3.jpg" alt="Gallery Image 3">
+                <img src="gallery4.jpg" alt="Gallery Image 4">
+            </div>
+            <div class="caption" id="caption">Caption 1</div>
+            <!-- Carousel Navigation Buttons -->
+            <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+        </section>
+
+        <!-- Upload Image Form -->
+        <section class="upload-form">
+            <h3>Upload an Image with Caption</h3>
+            <form id="imageUploadForm" onsubmit="uploadImage(event)">
+                <input type="file" id="imageFile" accept="image/*" required>
+                <input type="text" id="imageCaption" placeholder="Enter image caption" required>
+                <button type="submit">Upload Image</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Interactive Image Gallery | All rights reserved.</p>
+    </footer>
+
+    <script>
+        const carouselImages = document.getElementById('carouselImages');
+        const images = carouselImages.getElementsByTagName('img');
+        const captionElement = document.getElementById('caption');
+        let currentIndex = 0;
+
+        const captions = [
+            "Caption 1",
+            "Caption 2",
+            "Caption 3",
+            "Caption 4"
+        ];
+
+        // Function to change slide
+        function moveSlide(step) {
+            currentIndex += step;
+
+            // If at the beginning or end, reset to loop through
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            }
+
+            // Move the carousel images
+            carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            // Update the caption
+            captionElement.textContent = captions[currentIndex] || "No Caption";
+        }
+
+        // Handle image upload
+        function uploadImage(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const fileInput = document.getElementById('imageFile');
+            const captionInput = document.getElementById('imageCaption');
+            const file = fileInput.files[0];
+            const caption = captionInput.value;
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Create a new image element and append it to the carousel
+                    const imgElement = document.createElement('img');
+                    imgElement.src = e.target.result;
+                    imgElement.alt = 'Uploaded Image';
+                    carouselImages.appendChild(imgElement);
+
+                    // Add the caption
+                    captions.push(caption);
+
+                    // Move to the newly uploaded image
+                    currentIndex = images.length - 1;
+                    carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    captionElement.textContent = caption;
+                };
+                reader.readAsDataURL(file);
+            }
+
+            // Reset the form after upload
+            document.getElementById('imageUploadForm').reset();
+        }
+    </script>
+</body>
+</html>

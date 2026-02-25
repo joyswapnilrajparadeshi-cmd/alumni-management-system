@@ -1,0 +1,110 @@
+<?php
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donate - Alumni Management System</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #56ccf2, #2f80ed);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(90deg, #ff6f61, #d6336c, #8a2be2);
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            margin: 0;
+        }
+        .donate-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .donate-container h2 {
+            text-align: center;
+            color: #2f80ed;
+        }
+        .qr-code {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .qr-code img {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .payment-options {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .payment-options button {
+            background: linear-gradient(90deg, #ff6f61, #d6336c);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 1em;
+        }
+        .payment-options button:hover {
+            background: #2f80ed;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Make a Donation</h1>
+    </header>
+
+    <div class="donate-container">
+        <h2>Your Contributions Make a Difference</h2>
+        <p style="text-align: center;">Thank you for considering a donation to support our alumni initiatives. Please use the QR code or select a payment method below.</p>
+
+        <div class="qr-code">
+            <p>Scan to Donate:</p>
+            <img src="qr-code-placeholder.png" alt="QR Code">
+        </div>
+
+        <div class="payment-options">
+            <p>Select Payment Method:</p>
+            <button onclick="processDynamicPayment('Credit/Debit Card')">Credit/Debit Card</button>
+            <button onclick="processDynamicPayment('Net Banking')">Net Banking</button>
+            <button onclick="processDynamicPayment('UPI')">UPI</button>
+            <button onclick="processDynamicPayment('Wallets')">Wallets</button>
+        </div>
+    </div>
+
+    <script>
+        function processDynamicPayment(method) {
+            const userAmount = prompt(`You selected ${method}. Enter the amount you wish to donate:`);
+            if (userAmount && !isNaN(userAmount) && userAmount > 0) {
+                alert(`Thank you! Proceeding with a donation of ₹${userAmount} using ${method}.`);
+                // Simulate redirect to a payment gateway
+                window.location.href = `payment-gateway.html?method=${encodeURIComponent(method)}&amount=${encodeURIComponent(userAmount)}`;
+            } else {
+                alert('Invalid amount entered. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>

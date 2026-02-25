@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alumni Management System</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b, #56ccf2, #6a11cb);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-image: url('index-header.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            color: #fff;
+        }
+
+        header h1 {
+            font-size: 3em;
+            font-weight: 900;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        nav {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #feb47b;
+        }
+
+        .container {
+            padding: 20px;
+            margin: auto;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            max-width: 100%;
+            height: 400px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider img {
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: #feb47b;
+            color: #fff;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #feb47b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Alumni Management System</h1>
+        <p>Connect. Network. Celebrate.</p>
+    </header>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="events.html">Events</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="mentorship.html">Mentorship</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+
+    <div class="container">
+        <section class="section">
+            <h2>About Us</h2>
+            <p>The Alumni Management System helps alumni stay connected with their alma mater and fellow graduates. Join us to network, share opportunities, and celebrate your journey.</p>
+        </section>
+
+        <section class="section">
+            <h2>Image Gallery</h2>
+            <div class="slider-wrapper">
+                <div class="slider" id="slider">
+                    <img src="gallery1.jpg" alt="Alumni Event 1">
+                    <img src="gallery2.jpg" alt="Alumni Event 2">
+                    <img src="gallery3.jpg" alt="Alumni Event 3">
+                    <img src="gallery4.jpg" alt="Alumni Event 4">
+                </div>
+                <div class="navigation">
+                    <button class="prev" id="prev">&lt;</button>
+                    <button class="next" id="next">&gt;</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Upcoming Events</h2>
+            <ul>
+                <li><strong>Alumni Reunion 2025:</strong> March 15, 2025</li>
+                <li><strong>Career Guidance Webinar:</strong> April 10, 2025</li>
+                <li><strong>Annual Fundraiser:</strong> May 5, 2025</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Job Postings</h2>
+            <p>Explore career opportunities shared by our alumni network.</p>
+            <ul>
+                <li><strong>Software Engineer</strong> at TechCorp</li>
+                <li><strong>Data Analyst</strong> at DataHub</li>
+                <li><strong>Project Manager</strong> at BuildTech</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Alumni Management System. <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Use</a></p>
+    </footer>
+
+    <script>
+        const slider = document.getElementById('slider');
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+        let currentIndex = 0;
+
+        prev.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : 0;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+
+        next.addEventListener('click', () => {
+            currentIndex = (currentIndex < slider.children.length - 1) ? currentIndex + 1 : slider.children.length - 1;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+    </script>
+</body>
+</html>

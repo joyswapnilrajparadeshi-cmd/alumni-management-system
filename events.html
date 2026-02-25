@@ -1,0 +1,119 @@
+<?php
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Alumni Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+        }
+        nav a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        .event {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            width: 80%;
+            text-align: left;
+        }
+        .event h3 {
+            margin: 0 0 10px;
+        }
+        .event p {
+            margin: 5px 0;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            margin-top: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Events - Alumni Management System</h1>
+    </header>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="mentorship.html">Mentorship</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <main>
+        <h2>Upcoming Events</h2>
+        <div class="event">
+            <h3>Annual Alumni Meet 2025</h3>
+            <p><strong>Date:</strong> March 15, 2025</p>
+            <p><strong>Venue:</strong> JNTUA Campus Auditorium</p>
+            <p>Reconnect with your batchmates and relive your college memories at the Annual Alumni Meet 2025. Don't miss this opportunity to network and celebrate!</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.817004713807!2d78.48412331527549!3d17.38504478806519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93b0e64c2e43%3A0x5e068b87e0c0d9b1!2sJNTU%20Auditorium!5e0!3m2!1sen!2sin!4v1674450070924!5m2!1sen!2sin" allowfullscreen></iframe>
+        </div>
+        <div class="event">
+            <h3>Webinar on Career Development</h3>
+            <p><strong>Date:</strong> February 10, 2025</p>
+            <p><strong>Platform:</strong> Zoom</p>
+            <p>Join our expert panel of alumni to learn valuable insights and strategies for career advancement in the tech industry.</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/M0givPYbHXQ?si=wEv9vu52SXH5gkJY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="event">
+            <h3>Startup Showcase</h3>
+            <p><strong>Date:</strong> April 5, 2025</p>
+            <p><strong>Venue:</strong> JNTUA Innovation Center</p>
+            <p>Discover innovative startups founded by JNTUA alumni and explore opportunities to collaborate or invest.</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/RZnympq0Y5U?si=PmD3pTxcUU8Y2dp3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Alumni Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

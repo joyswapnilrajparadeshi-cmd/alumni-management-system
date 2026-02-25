@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #56ccf2, #2f80ed);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #56ccf2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2f80ed;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            max-height: 80%;
+        }
+
+        .modal-header {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .modal-close {
+            cursor: pointer;
+            color: red;
+            float: right;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Register</h1>
+        <form action="register.php" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="confirm-password">Confirm Password:</label>
+    <input type="password" id="confirm-password" name="confirm-password" required>
+
+    <label for="grad-year">Graduation Year:</label>
+    <input type="text" id="grad-year" name="grad-year" required>
+
+    <label for="department">Department:</label>
+    <input type="text" id="department" name="department" required>
+
+    <label for="admission-number">Admission Number:</label>
+    <input type="text" id="admission-number" name="admission-number" required>
+
+    <button type="submit">Register</button>
+</form>
+
+    </div>
+
+    <!-- Terms and Conditions Modal -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close">&times;</span>
+            <div class="modal-header">Terms and Conditions</div>
+            <p>
+                Welcome to the Alumni Management System (the "Platform"). By registering and using this Platform, you agree to the following terms and conditions. 
+                <br><br>
+                **Eligibility:** You must be a verified alumnus, student, or faculty member of JNTUA to register on the Platform.
+                <br><br>
+                **User Responsibilities:** Ensure accurate, current, and complete information during registration.
+                <br><br>
+                **Code of Conduct:** Use respectful and professional behavior.
+                <br><br>
+                **Privacy and Security:** Your data will not be shared without consent, except as required by law.
+                <br><br>
+                [Insert the full Terms and Conditions here]
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Open Modal
+        document.getElementById('terms-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('terms-modal').style.display = 'flex';
+        });
+
+        // Close Modal
+        document.getElementById('modal-close').addEventListener('click', function() {
+            document.getElementById('terms-modal').style.display = 'none';
+        });
+
+        // Close Modal on Outside Click
+        window.addEventListener('click', function(event) {
+            if (event.target === document.getElementById('terms-modal')) {
+                document.getElementById('terms-modal').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
