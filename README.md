@@ -31,26 +31,44 @@ It provides a **secure, scalable, and role-based ecosystem** enabling:
 ## 🎯 Core Functionalities  
 
 ### 👨‍🎓 Alumni Panel  
-- Secure authentication & profile management  
-- Event registration & participation  
-- Job portal & application tracking  
-- Donation system with Razorpay payment gateway  
-- Mentorship programs  
-- Gallery & media access  
-- Real-time notifications  
-- Email alerts & OTP-based verification  
+Secure Registration & Login System
+
+Profile Management
+
+Job Applications
+
+Event Viewing & Registration
+
+Mentorship Program Access
+
+Donations System
+
+Video Gallery Access
+
+Contact Admin
+
+Notification Alerts
 
 ---
 
 ### 🛠 Admin Panel  
-- Alumni management & verification  
-- Event creation & lifecycle management  
-- Mentor & mentorship handling  
-- Job posting & application review  
-- Donation analytics & reporting  
-- Knowledge base & content management  
-- Gallery & media moderation  
-- Automated email broadcasting  
+Secure Admin Authentication
+
+Alumni Record Management
+
+Event Management (Add / Update / Delete)
+
+Mentor Management (Add with Image Upload)
+
+Donation Monitoring
+
+Job Post & Application Management
+
+Video Management (Upload & Delete)
+
+Manual Email Notification System
+
+Full Database Control
 
 ---
 
@@ -80,31 +98,16 @@ Payment Gateway (Razorpay)
 
 ---
 
-## 💳 Payment Gateway Integration  
-
-- Razorpay Payment API  
-- Secure donation processing  
-- Transaction verification  
-- Payment logging & audit tracking  
-
----
-
-## 📩 Automated Notification System  
-
-- SMTP-based email alerts  
-- Event notifications  
-- Account actions & approvals  
-- OTP verification system  
-
----
-
-## 🧠 Machine Learning Integration  
-
-The system integrates **AI-powered crop disease detection microservice** using **Flask**, enabling future scalability for **predictive analytics & recommendation systems**.
-
-*(Microservice-based scalable architecture)*  
-
----
+🧩 Modules Implemented
+Module	Description
+👤 User Authentication	Secure Alumni & Admin Login
+🎉 Events	Event creation & participation
+💼 Jobs	Job posting & applications
+🤝 Mentorship	Mentor listing with images
+💰 Donations	Donation data handling
+🎬 Videos	Video gallery & deletion
+🔔 Notifications	Admin-triggered email alerts
+📩 Contact	Query & feedback system
 
 ## 🛠 Technology Stack  
 
@@ -133,18 +136,10 @@ The system integrates **AI-powered crop disease detection microservice** using *
 ## 🖼 Platform Screenshots  
 
 ### 🏠 Landing Page  
-<img width="100%" src="https://github.com/user-attachments/assets/XXXX" />
+<img width="1899" height="850" alt="image" src="https://github.com/user-attachments/assets/ba4db9cd-dcd6-4d79-8c34-387befca0afb" />
+<img width="1901" height="520" alt="image" src="https://github.com/user-attachments/assets/784868c0-70f5-4fde-a73e-b95096093eed" />
 
-### 👨‍🎓 Alumni Dashboard  
-<img width="100%" src="https://github.com/user-attachments/assets/YYYY" />
 
-### 🛠 Admin Dashboard  
-<img width="100%" src="https://github.com/user-attachments/assets/ZZZZ" />
-
-### 💳 Donation & Payment System  
-<img width="100%" src="https://github.com/user-attachments/assets/AAAA" />
-
-*(Replace image URLs with your uploaded screenshots)*
 
 ---
 
